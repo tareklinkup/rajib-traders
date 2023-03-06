@@ -764,11 +764,11 @@ class Employee extends CI_Controller
 
         try {
             $trans = (array)$dataObj;
-            unset($payment['emp_trans_id']);
+            //unset($payment['emp_trans_id']);
             $trans['UpdateBy'] = $this->session->userdata('userId');
             $trans['UpdateTime'] = Date('Y-m-d H:i:s');
 
-            $this->db->where('emp_trans_id', $transId)->insert('tbl_employee_transaction', $trans);
+            $this->db->where('emp_trans_id', $transId)->update('tbl_employee_transaction', $trans);
 
             $res = ['success' => true, 'message' => 'Transaction Update Successfully'];
         } catch (Exception $ex) {
